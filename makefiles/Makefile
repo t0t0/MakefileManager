@@ -44,7 +44,7 @@ DOCKGEN_NAME=dock-gen
 ####
 
 DATADOG_NAME=dd-agent
-API_KEY=e9d76048acee8975d98a354b4c9c34b5
+API_KEY=**********
 HOSTNAME=stage-agent
 
 ####
