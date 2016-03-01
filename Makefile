@@ -43,6 +43,3 @@ package_remove:
 	sed -i "/$$package/d" $(MAKEFILEDIR)/packages ; \
 	echo $$(tput setaf 2)removed package $$package $$(tput setaf 7); \
 	fi;
-
-test_condition:
-	if grep -Fq -ne $$package $(MAKEFILEDIR)/packages; then echo "ok"; else echo "niks"; fi;
