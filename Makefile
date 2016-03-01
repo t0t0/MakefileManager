@@ -24,13 +24,19 @@ package_add:
 	then echo $$(tput setaf 3)version not defined, using latest version $$(tput setaf 7); \
 	version=latest ; fi ; \
 	if [[ -e $(MAKEFILEDIR)/$$package/$$package-$$version.mk ]]; \
-	then echo $$(tput setaf 2)adding $$package:$$version$$(tput setaf 7); \
-	echo "include $(MAKEFILEDIR)/$$package/$$package-$$version.mk" >> $(MAKEFILEDIR)/packages ; \
+	then echo "include $(MAKEFILEDIR)/$$package/$$package-$$version.mk" >> $(MAKEFILEDIR)/packages ; \
+	echo $$(tput setaf 2)added package $$package:$$version$$(tput setaf 7); \
 	else \
-	echo $$(tput setaf 1)version $$version of package $$package does not exist, doing nothing $$(tput setaf 7); \
+	echo $$(tput setaf 1)version $$version of package $$package does not exist $$(tput setaf 7); \
 	fi; \
 	else echo $$(tput setaf 1)package $$package does not exist $$(tput setaf 7); \
 	fi; \
 	fi ;
 
-test_remove:
+package_remove:
+	@if [[ -z "$$package" ]]; \
+	then echo $$(tput setaf 1)package not defined, please define a package $$(tput setaf 7); \
+	else \
+	sed -i "/$$package/d" $(MAKEFILEDIR)/packages ; \
+	echo $$(tput setaf 2)removed package $$package $$(tput setaf 7); \
+	fi;
