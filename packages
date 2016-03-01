@@ -1,0 +1,2 @@
+
+include MakefileManager/test/test-nu.mk
