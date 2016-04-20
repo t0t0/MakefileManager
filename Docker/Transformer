@@ -29,8 +29,12 @@ VOLUME1_RUNVARS = -v $(VOLUME1)
 endif
 
 ## Image
-ifdef IMAGE
-IMAGE_RUNVARS = $(IMAGE)
+ifdef IMAGE_NAME 
+ifndef IMAGE_VERSION
+IMAGE = $(IMAGE_NAME)
+else
+IMAGE = $(IMAGE_NAME):$(IMAGE_VERSION)
+endif
 endif
 
 ## Command
