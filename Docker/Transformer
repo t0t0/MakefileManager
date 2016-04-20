@@ -1,0 +1,41 @@
+ifndef CONTAINER
+$(error CONTAINER is not defined)
+else
+include $(CONTAINER).cfg
+endif
+
+
+
+## Amount of containers
+CONTAINERS?=1
+
+## Run options
+ifdef OPTIONS
+OPTIONS_RUNVARS = -$(OPTIONS)
+endif
+
+## Naming
+ifdef NAME
+NAME_RUNVARS = --name $(NAME)
+endif
+
+ifdef HOSTNAME
+HOSTNAME_RUNVARS = -h $(HOSTNAME)
+endif
+
+## Volumes
+ifdef VOLUME1
+VOLUME1_RUNVARS = -v $(VOLUME1)
+endif
+
+## Image
+ifdef IMAGE
+IMAGE_RUNVARS = $(IMAGE)
+endif
+
+## Command
+ifdef COMMAND
+COMMAND_RUNVARS = $(COMMAND)
+endif
+
+RUNVARS ?= $(OPTIONS_RUNVARS) $(NAME_RUNVARS) $(HOSTNAME_RUNVARS) $(VOLUME1_RUNVARS) $(IMAGE) $(COMMAND)
