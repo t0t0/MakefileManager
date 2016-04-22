@@ -28,11 +28,6 @@ ifdef HOSTNAME
 HOSTNAME_RUNVARS = -h $(HOSTNAME)$$i
 endif
 
-## Volumes
-ifdef VOLUME1
-VOLUME1_RUNVARS = -v $(VOLUME1)
-endif
-
 ## Image
 ifdef IMAGE_NAME 
 ifndef IMAGE_VERSION
