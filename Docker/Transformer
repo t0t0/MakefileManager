@@ -14,13 +14,18 @@ ifdef OPTIONS
 OPTIONS_RUNVARS = -$(OPTIONS)
 endif
 
+## Linking
+ifdef LINK
+LINK_RUNVARS= --link $(LINK)
+endif
+
 ## Naming
 ifdef NAME
-NAME_RUNVARS = --name $(NAME)
+NAME_RUNVARS = --name $(NAME)$$i
 endif
 
 ifdef HOSTNAME
-HOSTNAME_RUNVARS = -h $(HOSTNAME)
+HOSTNAME_RUNVARS = -h $(HOSTNAME)$$i
 endif
 
 ## Volumes
@@ -41,6 +46,10 @@ endif
 ifdef COMMAND
 COMMAND_RUNVARS = $(COMMAND)
 endif
+
+transform:
+	VARS = ./vars.sh
+	echo $(VARS)
 
 RUNVARS ?= $(OPTIONS_RUNVARS) $(NAME_RUNVARS) $(HOSTNAME_RUNVARS) $(VOLUME1_RUNVARS) $(IMAGE) $(COMMAND)
 

@@ -10,7 +10,7 @@ E_BUILDVARS=$(BUILDVARS)
 endif
 
 run:
-	@for i in `seq 1 $(CONTAINERS)`; do docker run $(E_RUNVARS); done;
+	docker run $(E_RUNVARS)
 
 logs:
 	docker logs $(CONTAINER)
@@ -22,7 +22,11 @@ build:
 	@docker build $(E_BUILDVARS)
 	@echo "$(IMAGE) built!" 
 
-
 clean:
 	@docker kill $(CONTAINER) | xargs docker rm
 	@echo "cleaned!"
+
+deploy:
+	@for i in `seq 1 $(CONTAINERS)`; do ssh $(CONNECT) docker run $(E_RUNVARS); done;
+
+test_trans: transform
