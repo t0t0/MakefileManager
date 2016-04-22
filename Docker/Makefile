@@ -29,4 +29,3 @@ clean:
 deploy:
 	@for i in `seq 1 $(CONTAINERS)`; do ssh $(CONNECT) docker run $(E_RUNVARS); done;
 
-test_trans: transform

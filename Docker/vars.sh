@@ -1,3 +1,4 @@
-!# /bin/bash
+#! /bin/sh
 
-return "test"
+echo "test"
+exit 0
